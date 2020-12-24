@@ -27,7 +27,7 @@ VAGRANTFILE_API_VERSION = "2"
 
 # Builds
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
-  config.vm.define :first do |box1|
+  config.vm.define :controller do |box1|
     box1.vm.box = $debian
     box1.vm.hostname = "ansible-con"
     # config.vm.box_check_update = false
@@ -35,7 +35,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
     # config.vm.network "forwarded_port", guest: 80, host: 8080, host_ip: "127.0.0.1"
 
-    box1.vm.network "private_network", ip: "192.168.1.10"
+    box1.vm.network "private_network", ip: "192.168.1.20"
 
     # config.vm.network "public_network"
 
@@ -49,17 +49,17 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     box1.vm.provision "shell", inline: $ansible_main
   end
 
-  config.vm.define :second do |box2|
+  config.vm.define :node1 do |box2|
     box2.vm.box = $debian
     box2.vm.hostname = "ansible-node1"
     # config.vm.box_check_update = false
-    # config.vm.network "forwarded_port", guest: 80, host: 8080
+    config.vm.network "forwarded_port", guest: 80, host: 8080
 
     # config.vm.network "forwarded_port", guest: 80, host: 8080, host_ip: "127.0.0.1"
 
-    box2.vm.network "private_network", ip: "192.168.1.12"
+    box2.vm.network "private_network", type: "dhcp"
 
-    # config.vm.network "public_network"
+    box2.vm.network "public_network"
 
     box2.vm.synced_folder "data", "/vagrant_data"
 
@@ -71,18 +71,18 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     box2.vm.provision "shell", inline: $ubuntu
   end
 
-  config.vm.define :third do |box3|
+  config.vm.define :node2 do |box3|
     box3.vm.box = $rhel
     box3.vbguest.installer_options = { allow_kernel_upgrade: true }
     box3.vm.hostname = "ansible-node2"
     # config.vm.box_check_update = false
-    # config.vm.network "forwarded_port", guest: 80, host: 8080
+    config.vm.network "forwarded_port", guest: 80, host: 8081
 
     # config.vm.network "forwarded_port", guest: 80, host: 8080, host_ip: "127.0.0.1"
 
-    box3.vm.network "private_network", ip: "192.168.1.14"
+    box3.vm.network "private_network", type: "dhcp"
 
-    # config.vm.network "public_network"
+    box3.vm.network "public_network"
 
     box3.vm.synced_folder "data", "/vagrant_data"
 
