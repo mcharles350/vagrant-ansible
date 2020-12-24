@@ -35,7 +35,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
     # config.vm.network "forwarded_port", guest: 80, host: 8080, host_ip: "127.0.0.1"
 
-    box1.vm.network "private_network", ip: "10.0.2.10"
+    box1.vm.network "private_network", ip: "192.168.1.10"
 
     # config.vm.network "public_network"
 
@@ -57,7 +57,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
     # config.vm.network "forwarded_port", guest: 80, host: 8080, host_ip: "127.0.0.1"
 
-    box2.vm.network "private_network", ip: "10.0.2.12"
+    box2.vm.network "private_network", ip: "192.168.1.12"
 
     # config.vm.network "public_network"
 
@@ -80,7 +80,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
     # config.vm.network "forwarded_port", guest: 80, host: 8080, host_ip: "127.0.0.1"
 
-    box3.vm.network "private_network", ip: "10.0.2.14"
+    box3.vm.network "private_network", ip: "192.168.1.14"
 
     # config.vm.network "public_network"
 
