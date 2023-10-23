@@ -20,3 +20,12 @@
 # Project Directory
 - Create an inventory file with any name - it should have the IPs/FQDNs of managed nodes
 - Create ansible.cfg
+
+# Ad-hoc Commands
+- Ansible Ad-hoc commands starts with <b>ansible</b> command
+
+# List Available Modules
+- Command: ansible-doc -l
+- Command: ansible-doc -l | wc -l # count how many modules
+- Command: ansible-doc -l | grep <module/SearchString> # Search for required module
+- Command: ansible-dock <moduleName> # Get help/documentation for your required module
