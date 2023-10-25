@@ -20,7 +20,10 @@ ansible all -m ansible.builtin.shell -a 'free -mh'
 # Shell Module is executing commands using shell on managed nodes, so environment variables and 
 # also |, >,<, &&, || and ; work properly
 
-ansible all -m ansible.buildin.shell -a 'free -mh;date'
+ansible all -m ansible.builtin.shell -a 'free -mh;date'
+
+# Run a command in batch
+ansible all -m ansible.builtin.shell -a 'date' -f 1 # this will show 1 managed node at a time.
 
 # Run playbook
 ansible-playbook demo.yml
