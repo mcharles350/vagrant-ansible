@@ -23,6 +23,7 @@
 
 # Ad-hoc Commands
 - Ansible Ad-hoc commands starts with <b>ansible</b> command
+- Example: ansible <host-pattern> -m <moduleName> [<-a arguments>]
 
 # List Available Modules
 - Command: ansible-doc -l
