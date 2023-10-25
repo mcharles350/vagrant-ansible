@@ -41,3 +41,5 @@
   - Environment variable: export ANSIBLE_FORKS=requiredBatchSize
   - By Passing -f required BatchSize in ansible Ad-hoc commands
   - By keeping default value in ansible.cfg with forks=requiredBatchSize
+  
+- NOTE: We need 1GB per 10 forks + 2GB reservation for an Ansible Controller
